@@ -1,4 +1,4 @@
-const CACHE = 'test-muni-v4';
+const CACHE = 'test-muni-v5';
 const ASSETS = ['./', './index.html'];
 
 self.addEventListener('install', (e) => {
