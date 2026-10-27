@@ -453,6 +453,152 @@
     ::-webkit-scrollbar-thumb:hover{background:#2a4a62}
   }
 
+  /* ============ MODO ESTUDIO ============ */
+  .study-toggle{
+    position:relative;
+    display:flex; align-items:flex-start; gap:13px; margin-top:18px; padding:14px 15px;
+    border-radius:14px; cursor:pointer;
+    border:1.5px solid rgba(120,170,190,.16);
+    background:linear-gradient(160deg, rgba(22,42,58,.55), rgba(13,26,38,.7));
+    transition:border-color .2s ease, background .2s ease, box-shadow .25s ease;
+  }
+  .study-toggle:hover{
+    border-color:rgba(251,191,36,.35);
+    background:linear-gradient(160deg, rgba(28,48,66,.75), rgba(16,30,44,.8));
+  }
+  .study-toggle input{position:absolute; width:1px; height:1px; opacity:0; pointer-events:none}
+  .study-toggle-track{
+    position:relative; flex:0 0 auto; width:44px; height:24px; margin-top:1px;
+    border-radius:999px; border:1px solid rgba(120,170,190,.3);
+    background:rgba(10,22,32,.9); box-shadow:inset 0 1px 2px rgba(0,0,0,.5);
+    transition:background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .study-toggle-track > span{
+    position:absolute; top:3px; left:3px; width:16px; height:16px; border-radius:50%;
+    background:#8aa6b6;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), background .25s ease;
+  }
+  .study-toggle input:checked + .study-toggle-track{
+    border-color:transparent;
+    background:linear-gradient(135deg,#fbbf24,#f59e0b);
+    box-shadow:0 0 18px -6px rgba(245,158,11,.9), inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .study-toggle input:checked + .study-toggle-track > span{transform:translateX(20px); background:#3b2503}
+  .study-toggle input:focus-visible + .study-toggle-track{outline:2px solid var(--warn); outline-offset:2px}
+  .study-toggle-text b{display:block; font-size:14px; color:#fde68a; letter-spacing:.01em}
+  .study-toggle-text span{display:block; margin-top:3px; font-size:12.5px; line-height:1.45; color:var(--muted)}
+
+  .quiz-meta-left{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .study-badge{color:#fcd34d; background:rgba(245,158,11,.12); border-color:rgba(251,191,36,.32)}
+  .score-info .study-badge{margin-bottom:10px}
+
+  .study-tools{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:-6px 0 14px; flex-wrap:wrap}
+  .hint-btn{
+    display:inline-flex; align-items:center; gap:8px; padding:8px 14px;
+    border-radius:999px; border:1.5px solid rgba(251,191,36,.35);
+    background:linear-gradient(135deg, rgba(245,158,11,.16), rgba(245,158,11,.06));
+    color:#fcd34d; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .25s ease;
+  }
+  .hint-btn:hover:not(:disabled){
+    transform:translateY(-1px);
+    background:linear-gradient(135deg, rgba(245,158,11,.26), rgba(245,158,11,.1));
+    border-color:rgba(251,191,36,.6);
+    box-shadow:0 10px 22px -16px rgba(245,158,11,.9);
+  }
+  .hint-btn:focus-visible{outline:2px solid var(--warn); outline-offset:2px}
+  .hint-btn:disabled{
+    opacity:.55; cursor:default; transform:none;
+    color:#d6b25e; border-color:rgba(251,191,36,.2); background:rgba(245,158,11,.06);
+  }
+  .hint-btn .bulb{font-size:15px; line-height:1}
+  .hint-counter{
+    padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700;
+    color:#fbbf24; background:rgba(245,158,11,.1); border:1px solid rgba(251,191,36,.22);
+    white-space:nowrap;
+  }
+
+  .study-reveal{
+    margin:0 0 16px; padding:14px 16px; border-radius:14px;
+    background:linear-gradient(150deg, rgba(245,158,11,.12), rgba(20,184,166,.06));
+    border:1px solid rgba(251,191,36,.28);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    animation:revealIn .3s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes revealIn{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+  .reveal-head{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:9px}
+  .law-badge{
+    display:inline-flex; align-items:center; padding:4px 11px; border-radius:999px;
+    font-size:12.5px; font-weight:800; color:#3b2503;
+    background:linear-gradient(135deg,#fbbf24,#f59e0b);
+    box-shadow:0 8px 18px -12px rgba(245,158,11,.95), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .reveal-label{font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#fcd34d}
+  .reveal-summary{margin:0; font-size:13.5px; line-height:1.55; color:#d9e9e6}
+  .reveal-correct{margin:0 0 9px; font-size:13.5px; line-height:1.5; color:#6ee7b7}
+  .reveal-correct b{color:#a7f3d0; font-weight:700}
+
+  .option.revealed{
+    border-color:rgba(16,185,129,.65);
+    background:linear-gradient(135deg, rgba(16,185,129,.18), rgba(20,184,166,.05));
+    box-shadow:0 0 0 1px rgba(16,185,129,.4), 0 14px 30px -20px rgba(16,185,129,.85);
+  }
+  .option.revealed .letter{
+    color:#04211f; border-color:transparent;
+    background:linear-gradient(135deg,#6ee7b7,#10b981);
+    box-shadow:0 6px 16px -8px rgba(16,185,129,.9);
+  }
+  .option.revealed::after{
+    content:"✓"; position:absolute; right:15px; top:50%; transform:translateY(-50%);
+    width:22px; height:22px; display:grid; place-items:center; border-radius:50%;
+    font-size:12px; font-weight:900; color:#04211f;
+    background:linear-gradient(135deg,#6ee7b7,#10b981);
+    box-shadow:0 0 0 4px rgba(16,185,129,.14);
+  }
+  .option.wrong{
+    border-color:rgba(244,63,94,.6);
+    background:linear-gradient(135deg, rgba(244,63,94,.16), rgba(244,63,94,.04));
+  }
+  .option.wrong .letter{
+    color:#2a0710; border-color:transparent;
+    background:linear-gradient(135deg,#fb7185,#f43f5e);
+    box-shadow:0 6px 16px -8px rgba(244,63,94,.9);
+  }
+  .option.wrong::after{
+    content:"✕"; position:absolute; right:15px; top:50%; transform:translateY(-50%);
+    width:22px; height:22px; display:grid; place-items:center; border-radius:50%;
+    font-size:11px; font-weight:900; color:#2a0710;
+    background:linear-gradient(135deg,#fb7185,#f43f5e);
+    box-shadow:0 0 0 4px rgba(244,63,94,.14);
+  }
+
+  .score-circle.study{
+    background:conic-gradient(from -90deg, #fbbf24 calc(var(--p)*1%), rgba(30,52,68,.55) 0);
+    box-shadow:0 0 0 1px rgba(251,191,36,.22), 0 0 42px -12px rgba(245,158,11,.65), inset 0 0 24px rgba(0,0,0,.35);
+  }
+  .score-circle.study .num{text-shadow:0 0 22px rgba(245,158,11,.6)}
+  .score-circle.study::after{border-color:rgba(251,191,36,.16)}
+
+  .study-metrics{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:22px}
+  .metric{
+    padding:13px 12px; text-align:center; border-radius:12px;
+    background:linear-gradient(160deg, rgba(22,42,58,.65), rgba(13,26,38,.8));
+    border:1px solid rgba(120,170,190,.16);
+  }
+  .metric b{display:block; font-size:20px; font-weight:800; color:#f0fdfa; font-variant-numeric:tabular-nums}
+  .metric span{display:block; margin-top:4px; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+  .metric.good b{color:#6ee7b7}
+  .metric.warn b{color:#fbbf24}
+  .metric.bad b{color:#fda4af}
+
+  .study-stats-sub{margin:18px 0 6px; font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#fcd34d}
+  .help-row{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:9px 0; font-size:13.5px; border-bottom:1px dashed rgba(120,170,190,.14);
+  }
+  .help-row:last-child{border-bottom:none}
+  .help-row .help-n{font-weight:700; color:#fbbf24; white-space:nowrap; font-variant-numeric:tabular-nums}
+
   /* ============ RESPONSIVE ============ */
   @media(max-width:520px){
     .actions{grid-template-columns:1fr}
@@ -467,6 +613,8 @@
     .option{padding:14px 44px 14px 14px; font-size:14.5px}
     .score-circle{width:132px; height:132px}
     .score-circle .num{font-size:29px}
+    .study-metrics{grid-template-columns:1fr 1fr}
+    .study-toggle{padding:13px}
   }
 
   /* ============ ACCESIBILIDAD · MOVIMIENTO ============ */
@@ -505,6 +653,15 @@
       <label class="label" for="nickInput">Tu nombre o nick</label>
       <input id="nickInput" class="input" maxlength="20" placeholder="Ej: Nan" autocomplete="off" spellcheck="false">
 
+      <label class="study-toggle" for="studyToggle">
+        <input type="checkbox" id="studyToggle">
+        <span class="study-toggle-track" aria-hidden="true"><span></span></span>
+        <span class="study-toggle-text">
+          <b>Modo estudio</b>
+          <span>Activa la ampolleta para ver la ley y un resumen. Usa un puntaje aparte y cuenta las ayudas.</span>
+        </span>
+      </label>
+
       <label class="label" style="margin-top:18px">Modalidad del test</label>
       <div class="modes" id="modeList"></div>
 
@@ -527,13 +684,21 @@
   <section id="screen-quiz" class="screen">
     <div class="quiz-top">
       <div class="quiz-meta">
-        <span id="quizSection" class="badge"></span>
+        <div class="quiz-meta-left">
+          <span id="quizSection" class="badge"></span>
+          <span id="studyBadge" class="badge study-badge" hidden>💡 Modo estudio</span>
+        </div>
         <span id="quizCount" class="muted"></span>
       </div>
       <div class="progress"><div id="quizBar"></div></div>
     </div>
     <div class="card">
       <p class="qtext" id="quizQuestion"></p>
+      <div class="study-tools" id="studyTools" hidden>
+        <button type="button" id="btnHint" class="hint-btn"><span class="bulb">💡</span><span id="hintBtnText">Ver pista</span></button>
+        <span class="hint-counter" id="hintCounter">Ayudas: 0</span>
+      </div>
+      <div class="study-reveal" id="studyReveal" hidden></div>
       <div id="quizOptions" class="options"></div>
     </div>
     <div class="quiz-actions">
@@ -574,6 +739,40 @@
     </div>
   </section>
 
+  <!-- ============ RESULTADO · MODO ESTUDIO ============ -->
+  <section id="screen-study-result" class="screen">
+    <div class="card">
+      <div class="score-wrap">
+        <div class="score-circle study" id="studyCircle">
+          <span class="num" id="studyNum">0%</span>
+          <span class="lbl" id="studyLbl">sin ayuda</span>
+        </div>
+        <div class="score-info">
+          <span class="badge study-badge">💡 Modo estudio</span>
+          <h2 id="studyTitle">Resultado de estudio</h2>
+          <p id="studyMsg"></p>
+        </div>
+      </div>
+      <div class="study-metrics" id="studyMetrics"></div>
+    </div>
+
+    <div class="card">
+      <h3>Desglose por sección</h3>
+      <div id="studySections"></div>
+    </div>
+
+    <div class="card">
+      <h3>💡 Uso de ayudas</h3>
+      <div id="studyHelpDetail"></div>
+    </div>
+
+    <div class="actions">
+      <button id="btnStudyReview" class="btn ghost full">🔍 Revisar respuestas</button>
+      <button id="btnStudyAgain" class="btn primary">Hacer otro test</button>
+      <button id="btnStudyStats" class="btn ghost">Ver estadísticas</button>
+    </div>
+  </section>
+
   <!-- ============ REVISIÓN ============ -->
   <section id="screen-review" class="screen">
     <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
@@ -607,6 +806,10 @@
     <div class="card" id="statsHistCard" hidden>
       <h3>Historial de tests</h3>
       <div id="statsHist"></div>
+    </div>
+    <div class="card" id="studyStatsCard" hidden>
+      <h3>💡 Modo estudio</h3>
+      <div id="studyStatsBody"></div>
     </div>
     <button id="btnStatsBack" class="btn ghost block">← Volver al inicio</button>
   </section>
@@ -7354,12 +7557,18 @@ QUESTIONS.push(...QUESTIONS_S13);
 /* =========================================================
    5. ESTADO
    ========================================================= */
-const state = { nick:'', mode:'completo', session:null };
+const state = { nick:'', mode:'completo', study:false, session:null };
 
 /* =========================================================
    UTILIDADES BASE (faltaban)
    ========================================================= */
 const $ = (sel) => document.querySelector(sel);
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
 
 /* =========================================================
    NAMESPACE DE localStorage
@@ -7371,6 +7580,8 @@ const STORAGE_PREFIX = 'testinfopublic:v1:';
 const K = {
   nick:  STORAGE_PREFIX + 'nick',
   stats: (nick) => STORAGE_PREFIX + 'stats:' + nick,
+  study: STORAGE_PREFIX + 'study',
+  studyStats: (nick) => STORAGE_PREFIX + 'study:' + nick,
   seen:  (nick) => STORAGE_PREFIX + 'seen:'  + nick,
   last:  (nick) => STORAGE_PREFIX + 'last:'  + nick
 };
@@ -7485,6 +7696,7 @@ function updateRotationHint(){
 
 function renderStart(){
   $('#nickInput').value = state.nick;
+  $('#studyToggle').checked = state.study;
   $('#btnStart').disabled = state.nick.trim().length === 0;
   renderModes();
   updateRotationHint();
@@ -7499,10 +7711,16 @@ function renderStartStats(){
   if(totals.total === 0){ box.hidden = true; return; }
   box.hidden = false;
   const p = pct(totals.correct, totals.total);
+  const ss = getStudyStats(state.nick);
+  const studyRows = ss.sessions > 0
+    ? `<div class="hist"><span>Modo estudio · sesiones</span><span class="h-score">${ss.sessions}</span></div>
+       <div class="hist"><span>Ayudas solicitadas</span><span class="h-score">${ss.hints}</span></div>`
+    : '';
   $('#startStatsBody').innerHTML = `
     <div class="hist"><span>Tests realizados</span><span class="h-score">${st.sessions}</span></div>
     <div class="hist"><span>Respuestas correctas</span><span class="h-score">${totals.correct} / ${totals.total}</span></div>
-    <div class="hist"><span>Logro global</span><span class="h-score">${p}%</span></div>`;
+    <div class="hist"><span>Logro global</span><span class="h-score">${p}%</span></div>
+    ${studyRows}`;
 }
 
 $('#nickInput').addEventListener('input', e => {
@@ -7510,6 +7728,11 @@ $('#nickInput').addEventListener('input', e => {
   $('#btnStart').disabled = state.nick.length === 0;
   renderStartStats();
   updateRotationHint();
+});
+
+$('#studyToggle').addEventListener('change', e => {
+  state.study = !!e.target.checked;
+  lsSet(K.study, state.study);
 });
 
 $('#btnStart').addEventListener('click', () => {
@@ -7543,6 +7766,66 @@ function totalize(st){
     correct += d.correct; total += d.total;
   });
   return { correct, total };
+}
+
+/* ---------- Modo estudio: estadísticas separadas ---------- */
+function getStudyStats(nick){
+  const base = {
+    sessions:0, questions:0, correct:0, correctNoHelp:0, hints:0,
+    sections:{}, history:[]
+  };
+  SECTIONS.forEach(s => base.sections[s.id] = { questions:0, correct:0, hints:0 });
+  if(!nick) return base;
+  const st = lsGet(K.studyStats(nick), null);
+  if(!st) return base;
+  base.sessions     = st.sessions || 0;
+  base.questions    = st.questions || 0;
+  base.correct      = st.correct || 0;
+  base.correctNoHelp= st.correctNoHelp || 0;
+  base.hints        = st.hints || 0;
+  base.history      = Array.isArray(st.history) ? st.history : [];
+  SECTIONS.forEach(s => {
+    const d = (st.sections && st.sections[s.id]) || {};
+    base.sections[s.id] = {
+      questions: d.questions || 0,
+      correct:   d.correct   || 0,
+      hints:     d.hints     || 0
+    };
+  });
+  return base;
+}
+
+function saveStudyStats(nick, s){
+  if(!nick || !s || !s.result) return;
+  const st = getStudyStats(nick);
+  const r  = s.result;
+  st.sessions++;
+  st.questions     += r.total;
+  st.correct       += r.correct;
+  st.correctNoHelp += r.correctNoHelp;
+  st.hints         += r.hints;
+
+  SECTIONS.forEach(sec => {
+    const d = r.perSec[sec.id] || { total:0, correct:0, hints:0 };
+    st.sections[sec.id].questions += d.total;
+    st.sections[sec.id].correct   += d.correct;
+    st.sections[sec.id].hints     += d.hints;
+  });
+
+  const modeLabel = (s.mode === 'completo')
+    ? 'Test completo'
+    : (SECTIONS.find(x => x.id === s.mode) || {}).name || 'Sección';
+
+  st.history.unshift({
+    date: new Date().toISOString(),
+    mode: modeLabel,
+    correct: r.correct,
+    total: r.total,
+    hints: r.hints,
+    score: pct(r.correctNoHelp, r.total)
+  });
+  st.history = st.history.slice(0, 12);
+  lsSet(K.studyStats(nick), st);
 }
 
 /* =========================================================
@@ -7623,8 +7906,10 @@ function startTest(mode){
 
   state.session = {
     mode,
+    study: !!state.study,
     questions,
     answers: new Array(questions.length).fill(null),
+    hints: new Array(questions.length).fill(false),
     index: 0
   };
 
@@ -7646,6 +7931,9 @@ function renderQuestion(){
   $('#quizCount').textContent   = `Pregunta ${s.index + 1} de ${s.questions.length}`;
   $('#quizBar').style.width     = ((s.index + 1) / s.questions.length * 100) + '%';
   $('#quizQuestion').textContent = item.q;
+
+  $('#studyBadge').hidden = !s.study;
+  renderStudyTools(item, sec, s);
 
   const cont = $('#quizOptions');
   cont.innerHTML = '';
@@ -7676,10 +7964,17 @@ function renderQuestion(){
     wrap.appendChild(hint);
     cont.appendChild(wrap);
   } else {
+    const revealed = !!(s.hints && s.hints[s.index]);
     item.shuffled.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'option' + (s.answers[s.index] === i ? ' selected' : '');
+      let cls = 'option';
+      if(s.answers[s.index] === i) cls += ' selected';
+      if(revealed){
+        if(opt.correct) cls += ' revealed';
+        else if(s.answers[s.index] === i) cls += ' wrong';
+      }
+      btn.className = cls;
       btn.innerHTML = `<span class="letter">${'ABCD'[i]}</span><span>${opt.text}</span>`;
       btn.addEventListener('click', () => {
         s.answers[s.index] = i;
@@ -7691,6 +7986,65 @@ function renderQuestion(){
 
   updateNavButtons();
 }
+
+/* ---------- Modo estudio: ampolleta y revelado ---------- */
+function renderStudyTools(item, sec, s){
+  const tools  = $('#studyTools');
+  const reveal = $('#studyReveal');
+  const used   = !!(s.hints && s.hints[s.index]);
+
+  if(!s.study){
+    tools.hidden = true;
+    reveal.hidden = true;
+    reveal.innerHTML = '';
+    return;
+  }
+
+  tools.hidden = false;
+  const btn = $('#btnHint');
+  btn.disabled = used;
+  btn.classList.toggle('used', used);
+  $('#hintBtnText').textContent = used ? 'Pista mostrada' : 'Ver pista';
+  const count = (s.hints || []).filter(Boolean).length;
+  $('#hintCounter').textContent = `Ayudas: ${count}`;
+
+  if(used){
+    reveal.hidden = false;
+    reveal.innerHTML = buildRevealHTML(item, sec);
+  } else {
+    reveal.hidden = true;
+    reveal.innerHTML = '';
+  }
+}
+
+function buildRevealHTML(item, sec){
+  if(item.type === 'input'){
+    return `<div class="reveal-head">
+        <span class="law-badge">Ley N° ${esc(item.answer)}</span>
+        <span class="reveal-label">Ley correcta</span>
+      </div>
+      <p class="reveal-summary">${esc(item.exp || '')}</p>`;
+  }
+
+  const correct = (item.shuffled || []).find(o => o.correct);
+  const law     = sec ? sec.sub : 'Normativa municipal';
+  const secName = sec ? sec.name : '';
+
+  return `<div class="reveal-head">
+      <span class="law-badge">${esc(law)}</span>
+      <span class="reveal-label">${esc(secName)}</span>
+    </div>
+    <p class="reveal-correct">✓ Alternativa correcta: <b>${esc(correct ? correct.text : '')}</b></p>
+    <p class="reveal-summary">${esc(item.exp || '')}</p>`;
+}
+
+$('#btnHint').addEventListener('click', () => {
+  const s = state.session;
+  if(!s || !s.study) return;
+  if(s.hints[s.index]) return;
+  s.hints[s.index] = true;
+  renderQuestion();
+});
 
 function updateNavButtons(){
   const s = state.session;
@@ -7720,21 +8074,48 @@ $('#btnNext').addEventListener('click', () => {
 function finishTest(){
   const s = state.session;
   const nick = state.nick;
-  let correct = 0;
+  let correct = 0, correctNoHelp = 0, correctWithHelp = 0, hints = 0;
   const perSec = {};
-  SECTIONS.forEach(x => perSec[x.id] = { correct:0, total:0 });
+  SECTIONS.forEach(x => perSec[x.id] = { correct:0, total:0, hints:0 });
 
- s.questions.forEach((q, i) => {
-    const ans = s.answers[i];
+  s.questions.forEach((q, i) => {
+    const ans  = s.answers[i];
     const isOk = isAnswerCorrect(q, ans);
+    const used = !!(s.hints && s.hints[i]);
+
     if(isOk) correct++;
+    if(used) hints++;
+    if(isOk && used)  correctWithHelp++;
+    if(isOk && !used) correctNoHelp++;
+
     perSec[q.sec].total++;
     if(isOk) perSec[q.sec].correct++;
+    if(used) perSec[q.sec].hints++;
   });
 
-  s.result = { correct, total: s.questions.length, perSec };
+  s.result = {
+    correct,
+    total: s.questions.length,
+    correctNoHelp,
+    correctWithHelp,
+    hints,
+    perSec
+  };
 
-  // Guardar estadísticas
+  // Marcar preguntas vistas (en ambos modos)
+  const seen = lsGet(K.seen(nick), []);
+  const ids  = s.questions.map(q => q.id);
+  lsSet(K.seen(nick), Array.from(new Set([...seen, ...ids])));
+
+  // Modo estudio: puntaje y estadísticas propias, sin tocar las normales
+  if(s.study){
+    saveStudyStats(nick, s);
+    renderStudyResult();
+    showScreen('study-result');
+    return;
+  }
+
+  // Guardar estadísticas normales
   const st = getStats(nick);
   st.sessions++;
   SECTIONS.forEach(x => {
@@ -7754,11 +8135,6 @@ function finishTest(){
   });
   st.history = st.history.slice(0, 12);
   lsSet(K.stats(nick), st);
-
-  // Marcar preguntas vistas
-  const seen = lsGet(K.seen(nick), []);
-  const ids  = s.questions.map(q => q.id);
-  lsSet(K.seen(nick), Array.from(new Set([...seen, ...ids])));
 
   renderResult();
   showScreen('result');
@@ -7840,6 +8216,72 @@ function renderResult(){
   $('#btnReview').disabled = r.correct === r.total;
 }
 
+/* ---------- Resultado del modo estudio ---------- */
+function renderStudyResult(){
+  const s = state.session;
+  if(!s || !s.result) return;
+  const r = s.result;
+  const score = pct(r.correctNoHelp, r.total);
+
+  $('#studyCircle').style.setProperty('--p', score);
+  $('#studyNum').textContent = score + '%';
+  $('#studyLbl').textContent = 'sin ayuda';
+  $('#studyTitle').textContent = `¡Bien, ${state.nick}!`;
+
+  let msg = '';
+  if(score >= 85) msg = 'Dominas el contenido sin ayuda. Excelente trabajo.';
+  else if(score >= 65) msg = 'Buen nivel. Revisa las ayudas que necesitaste y vuelve a intentarlo.';
+  else if(score >= 40) msg = 'Vas aprendiendo. Usa la ampolleta con criterio y repasa las secciones con más ayudas.';
+  else msg = 'Modo estudio: revisa la ley y el resumen antes de responder. Repetir el test es la mejor forma de avanzar.';
+  $('#studyMsg').textContent = msg;
+
+  const correctPct = pct(r.correct, r.total);
+  const correctClass = correctPct >= 80 ? 'good' : (correctPct >= 60 ? 'warn' : 'bad');
+  $('#studyMetrics').innerHTML = `
+    <div class="metric ${correctClass}"><b>${r.correct}/${r.total}</b><span>Aciertos</span></div>
+    <div class="metric good"><b>${r.correctNoHelp}</b><span>Sin ayuda</span></div>
+    <div class="metric warn"><b>${r.correctWithHelp}</b><span>Con ayuda</span></div>
+    <div class="metric ${r.hints ? 'warn' : 'good'}"><b>${r.hints}</b><span>Ayudas</span></div>`;
+
+  const cont = $('#studySections');
+  cont.innerHTML = '';
+  SECTIONS.forEach(sec => {
+    const d = r.perSec[sec.id];
+    if(!d || d.total === 0) return;
+    const sp = pct(d.correct, d.total);
+    const row = document.createElement('div');
+    row.className = 'sec-row';
+    row.innerHTML = `
+      <div class="sec-head">
+        <b>${sec.name}${tagFor(sp, d.total)}</b>
+        <span class="num">${d.correct}/${d.total} · ${sp}%${d.hints ? ` · 💡 ${d.hints}` : ''}</span>
+      </div>
+      <div class="bar"><div class="${barClass(sp)}" style="width:${sp}%"></div></div>`;
+    cont.appendChild(row);
+  });
+
+  const help = SECTIONS
+    .map(sec => ({ ...sec, ...r.perSec[sec.id] }))
+    .filter(x => x.total > 0 && x.hints > 0)
+    .sort((a, b) => b.hints - a.hints);
+
+  const helpBox = $('#studyHelpDetail');
+  if(help.length === 0){
+    helpBox.innerHTML = `<p class="muted" style="margin:0; font-size:13.5px">
+      No pediste ayuda en este test. El puntaje de estudio refleja todo lo que resolviste por tu cuenta.</p>`;
+  } else {
+    helpBox.innerHTML = `
+      <p class="muted" style="margin:0 0 10px; font-size:13.5px">
+        Solicitaste <b style="color:#fbbf24">${r.hints}</b> ayuda(s) en ${help.length} sección(es).
+        Cada ayuda se cuenta una vez por pregunta.
+      </p>
+      ${help.map(x => `<div class="help-row"><span>${x.name}</span><span class="help-n">${x.hints} ${x.hints === 1 ? 'ayuda' : 'ayudas'}</span></div>`).join('')}
+      <p class="muted" style="margin:12px 0 0; font-size:13px">
+        Puntaje de estudio = aciertos logrados sin usar la ampolleta.
+      </p>`;
+  }
+}
+
 /* =========================================================
    14. REVISIÓN DE ERRORES
    ========================================================= */
@@ -7870,6 +8312,10 @@ function renderReview(showAll){
 
     let html = `<p class="rev-q">${shown}. ${q.q}</p>`;
 
+    if(s.study && s.hints && s.hints[i]){
+      html += `<div style="margin:-4px 0 10px"><span class="tag mid" style="margin-left:0">💡 Ayuda usada</span></div>`;
+    }
+
     if(q.type === 'input'){
       if(ans === null){
         html += `<div class="rev-opt bad">⚠️ Sin responder</div>`;
@@ -7896,7 +8342,18 @@ function renderReview(showAll){
       🎉 No hay errores que revisar en este test.</div>`;
   }
 }
-$('#btnBackResult').addEventListener('click', () => showScreen('result'));
+$('#btnBackResult').addEventListener('click', () => {
+  const s = state.session;
+  showScreen(s && s.study ? 'study-result' : 'result');
+});
+
+/* ---------- Acciones del resultado en modo estudio ---------- */
+$('#btnStudyReview').addEventListener('click', () => { renderReview(false); showScreen('review'); });
+$('#btnStudyAgain').addEventListener('click', () => {
+  const s = state.session;
+  if(s) startTest(s.mode);
+});
+$('#btnStudyStats').addEventListener('click', () => { renderStats(); showScreen('stats'); });
 
 /* =========================================================
    15. REPETIR TEST
@@ -7928,6 +8385,7 @@ function renderStats(){
     $('#statsSections').innerHTML = '';
     $('#statsWeakCard').hidden = true;
     $('#statsHistCard').hidden = true;
+    $('#studyStatsCard').hidden = true;
     return;
   }
 
@@ -7998,6 +8456,58 @@ function renderStats(){
       </div>`;
     }).join('');
   }
+
+  renderStudyStatsCard(nick);
+}
+
+function renderStudyStatsCard(nick){
+  const card = $('#studyStatsCard');
+  const st = getStudyStats(nick);
+  if(st.sessions === 0){
+    card.hidden = true;
+    return;
+  }
+  card.hidden = false;
+
+  const avg = pct(st.correctNoHelp, st.questions);
+  const rows = [
+    ['Sesiones de estudio', st.sessions],
+    ['Preguntas respondidas', st.questions],
+    ['Aciertos sin ayuda', `${st.correctNoHelp} / ${st.questions}`],
+    ['Ayudas solicitadas', st.hints],
+    ['Puntaje promedio sin ayuda', `${avg}%`]
+  ].map(([label, value]) =>
+    `<div class="hist"><span>${label}</span><span class="h-score">${value}</span></div>`
+  ).join('');
+
+  const helps = SECTIONS
+    .map(sec => ({ ...sec, ...st.sections[sec.id] }))
+    .filter(x => x.hints > 0)
+    .sort((a, b) => b.hints - a.hints)
+    .slice(0, 4);
+
+  const helpBlock = helps.length
+    ? `<div class="study-stats-sub">Dónde pediste más ayuda</div>` +
+      helps.map(x => `<div class="help-row">
+        <span>${x.name}</span>
+        <span class="help-n">${x.hints} ${x.hints === 1 ? 'ayuda' : 'ayudas'} · ${x.questions} preg.</span>
+      </div>`).join('')
+    : `<p class="muted" style="margin:12px 0 0; font-size:13px">Aún no has usado la ampolleta en modo estudio.</p>`;
+
+  const histRows = st.history.slice(0, 5).map(h => {
+    const d = new Date(h.date);
+    const fecha = d.toLocaleDateString('es-CL', { day:'2-digit', month:'2-digit' }) +
+                  ' ' + d.toLocaleTimeString('es-CL', { hour:'2-digit', minute:'2-digit' });
+    return `<div class="hist">
+      <span>${fecha} · <span class="muted">${h.mode}</span></span>
+      <span class="h-score">${h.score}% · 💡 ${h.hints}</span>
+    </div>`;
+  }).join('');
+
+  $('#studyStatsBody').innerHTML = `
+    ${rows}
+    ${helpBlock}
+    ${histRows ? `<div class="study-stats-sub">Últimos tests de estudio</div>${histRows}` : ''}`;
 }
 
 /* =========================================================
@@ -8062,6 +8572,8 @@ function renderStats(){
     $('#nickInput').value = savedNick;
     $('#btnStart').disabled = false;
   }
+  state.study = !!lsGet(K.study, false);
+  $('#studyToggle').checked = state.study;
   renderModes();
   updateRotationHint();
   renderStartStats();
